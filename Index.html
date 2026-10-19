@@ -1,1 +1,310 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Voice Detector</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f4f3ff',
+              100: '#ebe9fe',
+              200: '#d9d6fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #818cf8;
+      border-radius: 4px;
+    }
+    /* Print specific styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+  <!-- TOP HEADER / NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo and App Name -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid font-bold fa-waveform-lines text-xl"></i>
+          <!-- Custom Voice Wave Icon -->
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            <path d="M12 3v18M8 6v12M4 9v6M16 6v12M20 9v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-bold bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent">Voice Detector</span>
+          <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">Detect AI-generated voices</span>
+        </div>
+      </div>
+
+      <!-- Quick Actions (Search, Theme Toggle, Print) -->
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        
+        <!-- Live Search Box -->
+        <div class="relative hidden md:block w-48 lg:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input type="text" id="searchInput" onkeyup="filterSections()" placeholder="Search policy..." 
+            class="w-full pl-9 pr-4 py-1.5 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white placeholder-slate-400 transition-all">
+        </div>
+
+        <!-- Dark/Light Theme Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleDarkMode()" aria-label="Toggle Theme" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Print/PDF Button -->
+        <button onclick="window.print()" class="flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white px-3.5 py-1.5 rounded-lg font-medium text-sm transition shadow-sm shadow-brand-500/30">
+          <i class="fa-solid fa-print"></i>
+          <span class="hidden sm:inline">Print / PDF</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="bg-gradient-to-b from-brand-50 to-slate-50 dark:from-slate-900 dark:to-slate-950 py-10 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 text-xs font-semibold mb-3">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Official Legal Document</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Privacy Policy</h1>
+        <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+          Learn how <span class="font-semibold text-brand-600 dark:text-brand-400">Voice Detector</span> protects your personal data, audio recordings, and device permissions in compliance with Google Play Console requirements.
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm text-sm text-slate-600 dark:text-slate-300 min-w-[240px]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs text-slate-400 uppercase font-bold">Effective Date</span>
+          <span class="font-medium text-slate-800 dark:text-slate-100">October 19, 2026</span>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs text-slate-400 uppercase font-bold">App Version</span>
+          <span class="font-medium text-slate-800 dark:text-slate-100">1.0.0+</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-slate-400 uppercase font-bold">Target Platform</span>
+          <span class="font-medium text-slate-800 dark:text-slate-100">Android / Google Play</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+    
+    <!-- Mobile Search Bar -->
+    <div class="mb-6 md:hidden no-print">
+      <input type="text" id="mobileSearchInput" onkeyup="filterSectionsMobile()" placeholder="Search policy sections..." 
+        class="w-full px-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white">
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- STICKY TABLE OF CONTENTS / NAVIGATION (DESKTOP) -->
+      <aside class="lg:col-span-1 hidden lg:block no-print">
+        <div class="sticky top-24 space-y-2 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-2">Table of Contents</h2>
+          <nav class="space-y-1 text-sm font-medium" id="toc-nav">
+            <a href="#overview" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">1. App Overview</a>
+            <a href="#information-collected" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">2. Information We Collect</a>
+            <a href="#device-permissions" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">3. Device Permissions</a>
+            <a href="#audio-handling" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">4. Audio Processing</a>
+            <a href="#how-we-use-data" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">5. How We Use Data</a>
+            <a href="#data-security" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">6. Security & Retention</a>
+            <a href="#childrens-privacy" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">7. Children's Privacy</a>
+            <a href="#contact-us" class="block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 transition">8. Contact Developer</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- POLICY CONTENT AREA -->
+      <div class="lg:col-span-3 space-y-8" id="policy-content">
+        
+        <!-- SECTION 1: APP OVERVIEW -->
+        <section id="overview" class="policy-section bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold">1</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">App Overview</h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            Welcome to <strong class="text-slate-800 dark:text-slate-100">Voice Detector</strong> ("we," "our," or "us"). Voice Detector is designed to assist users in analyzing audio files to evaluate whether a spoken voice is likely human or generated by Artificial Intelligence (AI).
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            We value your privacy and are committed to maintaining the security and confidentiality of your personal information and audio files. This policy provides detailed transparency regarding data collection, storage, permissions, and usage in accordance with Google Play Developer Policies.
+          </p>
+        </section>
+
+        <!-- SECTION 2: INFORMATION WE COLLECT -->
+        <section id="information-collected" class="policy-section bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold">2</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Information We Collect</h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            To provide user authentication, maintain account security, and perform voice detection analyses, we collect the following categories of information:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+            <!-- Account Info Card -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center space-x-2 text-brand-600 dark:text-brand-400 font-semibold mb-2">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Account & Profile Data</span>
+              </div>
+              <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside">
+                <li><strong>Full Name:</strong> To identify your user account profile.</li>
+                <li><strong>Age:</strong> To ensure age-appropriate service delivery.</li>
+                <li><strong>Phone Number:</strong> For account verification and security.</li>
+                <li><strong>Email Address:</strong> Used as your primary account identifier.</li>
+                <li><strong>Password:</strong> Encrypted for authentication access.</li>
+              </ul>
+            </div>
+
+            <!-- Audio Files Card -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+              <div class="flex items-center space-x-2 text-brand-600 dark:text-brand-400 font-semibold mb-2">
+                <i class="fa-solid fa-file-audio"></i>
+                <span>Audio Files & Recording Data</span>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">
+                Audio recordings selected by you for analysis. Supported audio formats include:
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">WAV</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">MP3</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">M4A</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">AAC</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">AMR</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">3GP</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: DEVICE PERMISSIONS -->
+        <section id="device-permissions" class="policy-section bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold">3</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Device Permissions & Privacy Guarantees</h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            Voice Detector adheres to the principle of minimal privilege. We only request permissions necessary to execute features you explicitly initiate:
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+              <div class="text-brand-600 dark:text-brand-400 mt-1"><i class="fa-solid fa-folder-open text-lg"></i></div>
+              <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 text-sm">System Audio File Picker Access</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Android's system file picker allows you to choose specific audio files for analysis without granting the app broad read/write access to your entire storage drive or private personal files.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+              <div class="text-brand-600 dark:text-brand-400 mt-1"><i class="fa-solid fa-microphone text-lg"></i></div>
+              <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 text-sm">Microphone Permission (Optional)</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Not required for importing saved recordings. Microphone access is requested only if you choose to record live voice clips inside the app for instant detection.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+              <div class="text-brand-600 dark:text-brand-400 mt-1"><i class="fa-solid fa-bell text-lg"></i></div>
+              <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 text-sm">Notifications Permission</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Used to send alerts regarding finished audio analyses or incoming call scam alerts, subject to device settings and Android permissions.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: AUDIO HANDLING & PROCESSING -->
+        <section id="audio-handling" class="policy-section bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold">4</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Audio Handling, Processing & Disclaimers</h2>
+          </div>
+          
+          <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            <p>
+              <strong>Selective Server Transmission:</strong> Voice Detector analyzes audio <em>only</em> after you actively select and submit a recording. The selected audio file is transmitted securely over an encrypted connection (HTTPS/TLS) to our configured analysis server.
+            </p>
+            <p>
+              <strong>Analysis Output:</strong> The system returns an estimated result (e.g., "Likely human voice", "Possible AI-generated voice") accompanied by an "AI Score" confidence percentage.
+            </p>
+            <p>
+              <strong>History Logging:</strong> Recent analysis scores, timestamps, and filenames are saved to your account history so you can review previous results inside the app.
+            </p>
+
+            <!-- IMPORTANT DISCLAIMER BOX -->
+            <div class="mt-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-xs sm:text-sm">
+              <div class="flex items-center space-x-2 font-bold mb-1 text-amber-800 dark:text-amber-300">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Important Accuracy Disclaimer</span>
+              </div>
+              <p>
+                Voice detection results are mathematical estimations provided for informational and screening purposes only. Detection scores are not definitive proof of voice cloning or AI synthetic generation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: HOW WE USE DATA -->
+        <section id="how-we-use-data" class="policy-section bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold">5</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">How We Use Collected Data</h2>
+          <
